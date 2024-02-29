@@ -105,16 +105,9 @@ REST_FRAMEWORK = {
 }
 
 
-# Продлить время жизни токена при обновлении
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Время жизни обычного токена (например, 60 минут)
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),  # Время жизни скользящего токена
-    'SLIDING_TOKEN_LIFETIME': timedelta(days=14),  # Время жизни скользящего токена (например, 14 дней)
-    'SLIDING_TOKEN_REFRESH_AFTER_LIFETIME': timedelta(days=7),  # Время до обновления скользящего токена (например, 7 дней)
-    'ALGORITHM': 'HS256',  # Алгоритм подписи токена
-    'SIGNING_KEY': SECRET_KEY,  # Секретный ключ приложения Django
-    'VERIFYING_KEY': None,
-    'AUTH_HEADER_TYPES': ('Bearer',),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
 }
 
 
@@ -190,7 +183,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-SESSION_CACHE_ALIAS = "default"
+
 
 

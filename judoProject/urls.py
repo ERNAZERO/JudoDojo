@@ -18,13 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("user/", include("user.urls")),
     path("training/", include("training.urls")),
-    path("competition/", include("competition.urls"))
+    path("competition/", include("competition.urls")),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
 ]
 
 if settings.DEBUG:

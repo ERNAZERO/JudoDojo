@@ -18,3 +18,4 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 class IsCoachPermission(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.is_Coach
+

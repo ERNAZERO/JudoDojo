@@ -19,11 +19,11 @@ from .models import Coach, Student, Group, GroupsAndStudents, Belt
 from rest_framework import generics
 
 
-def get_object(id: int, table):
-    try:
-        return table.objects.get(id=id)
-    except table.DoesNotExist:
-        raise Http404
+# def get_object(id: int, table):
+#     try:
+#         return table.objects.get(id=id)
+#     except table.DoesNotExist:
+#         raise Http404
 
 
 class StudentProfileView(APIView):
@@ -59,7 +59,7 @@ class CoachRegisterView(APIView):
 
 
 class StudentRegisterView(APIView):
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.IsAdminUser]
 
     def post(self, request):
         serializer = StudentFullSerializer(data=request.data)
